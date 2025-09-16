@@ -492,8 +492,8 @@ class Signer implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'forwarded_to_email', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['forwarded_reason']) && (mb_strlen($this->container['forwarded_reason']) < 1)) {
-            $invalidProperties[] = "invalid value for 'forwarded_reason', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['forwarded_reason']) && !is_string($this->container['forwarded_reason'])) {
+            $invalidProperties[] = "invalid value for 'forwarded_reason', must be a string or null.";
         }
 
         if (!is_null($this->container['message']) && (mb_strlen($this->container['message']) < 1)) {
@@ -1181,8 +1181,8 @@ class Signer implements ModelInterface, ArrayAccess
     public function setForwardedReason($forwarded_reason)
     {
 
-        if (!is_null($forwarded_reason) && (mb_strlen($forwarded_reason) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $forwarded_reason when calling Signer., must be bigger than or equal to 1.');
+        if (!is_null($forwarded_reason) && !is_string($forwarded_reason)) {
+            throw new \InvalidArgumentException('invalid type for $forwarded_reason when calling Signer., must be a string or null.');
         }
 
         $this->container['forwarded_reason'] = $forwarded_reason;
