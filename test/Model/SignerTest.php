@@ -36,34 +36,34 @@ namespace SignRequest;
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class SignerTest extends \PHPUnit_Framework_TestCase
+class SignerTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
      * Setup before running any test case
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
     }
 
     /**
      * Setup before running each test case
      */
-    public function setUp()
+    public function setUp(): void
     {
     }
 
     /**
      * Clean up after running each test case
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
     }
 
@@ -247,6 +247,25 @@ class SignerTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyForwardedReason()
     {
+        $signer = new \SignRequest\Model\Signer();
+        $signer->setEmail('test@example.com'); // Set required email field
+        
+        // Test that null value is allowed
+        $signer->setForwardedReason(null);
+        $this->assertNull($signer->getForwardedReason());
+        
+        // Test that empty string is allowed
+        $signer->setForwardedReason('');
+        $this->assertEquals('', $signer->getForwardedReason());
+        
+        // Test that non-empty string is allowed
+        $signer->setForwardedReason('Test reason');
+        $this->assertEquals('Test reason', $signer->getForwardedReason());
+        
+        // Test that validation passes for empty string
+        $signer->setForwardedReason('');
+        $invalidProperties = $signer->listInvalidProperties();
+        $this->assertEmpty($invalidProperties);
     }
 
     /**
