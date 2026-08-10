@@ -348,6 +348,7 @@ class Signer implements ModelInterface, ArrayAccess
     const LANGUAGE_ES = 'es';
     const LANGUAGE_SV = 'sv';
     const LANGUAGE_RU = 'ru';
+    const LANGUAGE_JA = 'ja';
 
 
 
@@ -375,6 +376,7 @@ class Signer implements ModelInterface, ArrayAccess
             self::LANGUAGE_ES,
             self::LANGUAGE_SV,
             self::LANGUAGE_RU,
+            self::LANGUAGE_JA,
         ];
     }
 
