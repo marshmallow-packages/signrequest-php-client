@@ -1,6 +1,5 @@
 {
     "name": "marshmallow/signrequest-client",
-    "version": "1.0.0",
     "description": "Official PHP client for SignRequest.com (https://signrequest.com)",
     "keywords": [
         "signrequest",
